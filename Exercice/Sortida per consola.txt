@@ -1,0 +1,159 @@
+PS C:\Users\Tomeu\Desktop\Exercice> & C:/Users/Tomeu/Desktop/Exercice/.venv/Scripts/python.exe c:/Users/Tomeu/Desktop/Exercice/facebook_exercise.py
+============================================================
+Community Detection in Facebook Social Network
+============================================================
+Loading network from facebook_combined.txt.gz...
+Network loaded successfully!
+Number of nodes: 4039
+Number of edges: 88234
+Average degree: 43.69
+
+============================================================
+Network Statistics
+============================================================
+Number of nodes: 4039
+Number of edges: 88234
+Density: 0.010820
+Average degree: 43.69
+Max degree: 1045
+Min degree: 1
+Number of connected components: 1
+Average clustering coefficient: 0.6055
+
+Visualizing subgraph with 100 nodes...
+c:\Users\Tomeu\Desktop\Exercice\facebook_exercise.py:126: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+Subgraph saved to 'facebook_subgraph.png'
+
+============================================================
+Applying Community Detection Methods
+============================================================
+
+1. Modularity Optimization (Greedy Algorithm)...
+   Number of communities: 13
+   Community sizes: [983, 815, 548, 543, 372, 219, 208, 206, 59, 37]
+
+2. Label Propagation...
+   Number of communities: 44
+   Community sizes: [1030, 753, 547, 469, 226, 215, 198, 179, 60, 49]
+
+3. Girvan-Newman (first level)...
+   Note: This is VERY slow for large networks. Progress bar shows edge removal.
+   Total edges to process: 88234
+   Removing edges:   0%|                                                                                                   | 0/88234 [1:09:23<?, ?edge/s]
+   Number of communities: 2
+   Community sizes: [3833, 206]
+
+4. Infomap...
+=======================================================
+  Infomap v2.8.0 starts at 2026-02-06 11:28:46
+  -> Input network:
+  -> No file output!
+=======================================================
+  -> Ordinary network input, using the Map Equation for first order network flows
+Calculating global network flow using flow model 'undirected'...
+  -> Using undirected links.
+  => Sum node flow: 1, sum link flow: 1
+Build internal network with 4039 nodes and 88234 links...
+  -> One-level codelength: 11.2456758
+
+================================================
+Trial 1/1 starting at 2026-02-06 11:28:46
+================================================
+Two-level compression: 28% 0.92% 0.0220924432% 0.0284489493% 
+Partitioned to codelength 0.391027237 + 7.68200438 = 8.073031616 in 74 modules.
+Super-level compression: 1.44374504% to codelength 7.956477623 in 7 top modules.
+
+Recursive sub-structure compression: 14.7981831% 0.0340215896% 0% . Found 4 levels with codelength 7.892812458
+
+=> Trial 1/1 finished in 0.4240989s with codelength 7.89281246
+
+
+================================================
+Summary after 1 trial
+================================================
+Best end modular solution in 4 levels:
+Per level number of modules:         [          7,         124,           9,           0] (sum: 140)
+Per level number of leaf nodes:      [          0,          15,        3738,         286] (sum: 4039)
+Per level average child degree:      [          7,     19.8571,     30.2177,     31.7778] (average: 29.941)
+Per level codelength for modules:    [0.009862015, 0.447596014, 0.012495165, 0.000000000] (sum: 0.469953194)
+Per level codelength for leaf nodes: [0.000000000, 0.002846947, 6.919881206, 0.500131111] (sum: 7.422859265)
+Per level codelength total:          [0.009862015, 0.450442961, 6.932376372, 0.500131111] (sum: 7.892812458)
+
+===================================================
+  Infomap ends at 2026-02-06 11:28:47
+  (Elapsed time: 0.4915313s)
+===================================================
+   Number of communities: 7
+   Community sizes: [1383, 796, 753, 547, 339, 206, 15]
+
+============================================================
+Evaluation Metrics
+============================================================
+
+Modularity Scores:
+------------------------------------------------------------
+modularity               : 0.7774
+label_propagation        : 0.7368
+girvan_newman            : 0.0439
+infomap                  : 0.7058
+
+Coverage and Performance:
+------------------------------------------------------------
+modularity               : coverage=0.9614, performance=0.8567
+label_propagation        : coverage=0.9783, performance=0.8679
+girvan_newman            : coverage=0.9999, performance=0.1076
+infomap                  : coverage=0.9954, performance=0.7921
+
+Normalized Mutual Information (NMI) between methods:
+------------------------------------------------------------
+modularity                vs label_propagation        : 0.7718
+modularity                vs girvan_newman            : 0.1782
+modularity                vs infomap                  : 0.7773
+label_propagation         vs girvan_newman            : 0.1580
+label_propagation         vs infomap                  : 0.7992
+girvan_newman             vs infomap                  : 0.2174
+
+Generating community size distribution plots...
+Community size distributions saved to 'community_size_distributions.png'
+
+============================================================
+Analysis Complete!
+============================================================
+
+Summary of findings:
+------------------------------------------------------------
+
+Best method by modularity: modularity
+Modularity score: 0.7774
+Number of communities: 13
+
+Strengths and limitations:
+------------------------------------------------------------
+Modularity Optimization (Greedy):
+  + Fast and efficient for large networks
+  + Good modularity scores
+  - May miss small communities (resolution limit)
+  - Deterministic (always same result)
+
+Label Propagation:
+  + Very fast, linear complexity
+  + Can find overlapping structures
+  - Non-deterministic (different results each run)
+  - May produce unbalanced partitions
+
+Girvan-Newman:
+  + Hierarchical structure
+  + Good theoretical foundation
+  - Very slow for large networks (O(m²n))
+  - Need to choose level in hierarchy
+
+Infomap:
+  + Based on information theory
+  + Finds communities with high information flow
+  + Good for directed networks
+  - Can be sensitive to network structure
+  - May produce many small communities
+PS C:\Users\Tomeu\Desktop\Exercice>
+
+
